@@ -18,6 +18,21 @@ def create_data():
     return data_set, feature
 
 
+def create_data2():
+    feature = [
+        [1, 1, 0, '挂科'],
+        [0, 0, 1, '不挂科'],
+        [1, 0, 1, '不挂科'],
+        [1, 0, 0, '挂科'],
+        [0, 1, 0, '挂科'],
+        [0, 1, 1, '不挂科'],
+        [0, 1, 0, '不挂科'],
+        [0, 0, 1, '挂科']
+    ]
+    label = ['喝酒', '逛街', '学习']
+    return feature, label
+
+
 def shanno(data_set):
     """
     计算标签数组的香农熵
@@ -181,11 +196,10 @@ def grab_tree(filename):
 
 
 if __name__ == '__main__':
-    data_set, feature = create_data()
+    data_set, feature = create_data2()
     tree = create_decision_tree(data_set, feature)
-    store_tree(tree, 'tree.txt')
-
-    label = test(tree, feature, [0, 1])
+    # store_tree(tree, 'tree.txt')
+    label = test(tree, feature, [0, 0, 1])
     print(label)
-    tree = grab_tree('tree.txt')
+    # tree = grab_tree('tree.txt')
     print(tree)
